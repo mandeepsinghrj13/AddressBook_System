@@ -40,14 +40,17 @@ public class AddressBook
 	public String getZip() {
 		return zip;
 	}
+	
 	public void setZip(String zip) {
-		this.zip = zip;
+		this.zip= zip;
 	}
+	
+	
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhoneNumber(String string) {
+		this.phoneNumber = string;
 	}
 	public String getEmail() {
 		return email;
@@ -61,10 +64,12 @@ public class AddressBook
 		return "AddressBook [firstname=" + firstname + ", lastname=" + lastname + ", city=" + city + ", state=" + state
 				+ ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
 	}
-
-    public static void main(String[] args) {
-         System.out.println("Welcome to Address Book Program....!!!");
-     	AddressBook addressbook = new AddressBook();
+	public static void main(String[] args) {
+	   
+	   System.out.println("Welcome to Address Book Program....!!!");
+	
+		try {
+		AddressBook addressbook = new AddressBook();
 		AddressBook addressbook1 = new AddressBook();
 		ArrayList<AddressBook> l1=new ArrayList<AddressBook>();
 		ArrayList<AddressBook> l=new ArrayList<AddressBook>();
@@ -101,7 +106,7 @@ public class AddressBook
 			 System.out.println( PhoneNumber);
 					 
 			 System.out.println("Enter your email:");
-			 addressbook.setEmail(sc.next());
+			 addressbook.setEmail(sc.nextLine());
 			 String email= addressbook. getEmail();
 			 System.out.println(email);
 			 
@@ -138,20 +143,20 @@ public class AddressBook
 			 System.out.println( PhoneNumber1);
 					 
 			 System.out.println("Enter your email:");
-			 addressbook1.setEmail(sc.next());
-			 String email1= addressbook1.getEmail();
+			 addressbook1.setEmail(sc.nextLine());
+			 String email1= addressbook1. getEmail();
 			 System.out.println(email1);
 			
 		 
-			 l.add(addressbook);
-			 l.add(addressbook1);
-			 l1.addAll(l);
-			 System.out.println("All list"+l1);
-		 
-			 System.out.println("Edit record");
-			 System.out.println("Enter name to edit:");
-			 for(int m=0;m<l1.size();m++){
-				 addressbook=l1.get(m);
+		 l.add(addressbook);
+		 l.add(addressbook1);
+		 l1.addAll(l);
+		 System.out.println("All list"+l1);
+		
+		System.out.println("Edit record");
+		 System.out.println("Enter name to edit:");
+		for(int m=0;m<l1.size();m++){
+			addressbook=l1.get(m);
 			 if(sc.nextLine().equals(addressbook.firstname)) {
 				 System.out.println("Enter new city:");
 				 addressbook.setCity(sc.nextLine());
@@ -162,5 +167,24 @@ public class AddressBook
 			 }
 		}
 		
-   }
+		System.out.println("remove record");
+		 System.out.println("Enter name to remove:");
+		for(int m=0;m<l1.size();m++){
+			addressbook=l1.get(m);
+			 if(sc.nextLine().equals(addressbook.firstname)) {
+				 l1.remove(addressbook);
+				 System.out.println("List After removing"+l1.toString());
+				 break;
+			 }else {
+				 System.out.println("User not found");
+			 }
+		}
+		
+			
+		 sc.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		
+	}
 }
