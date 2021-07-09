@@ -178,9 +178,7 @@ public class AddressBook
 			 }else {
 				 System.out.println("User not found");
 			 }
-		}
-		
-			
+		}			
 		 sc.close();
 		}catch(Exception e){
 			System.out.println(e);
